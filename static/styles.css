@@ -1,0 +1,765 @@
+
+:root {
+    /* Fondos */
+    --bg-main: #0a0d14;          /* Fondo base muy oscuro */
+    --bg-surface: #111622;       /* Fondo de secciones y tarjetas */
+    --bg-surface-elevated: #181f30; /* Tarjetas elevadas / hover */
+    --bg-glass: rgba(17, 22, 34, 0.75);
+
+    /* Acentos Azules */
+    --blue-base: #2563eb;
+    --blue-light: #3b82f6;
+    --blue-dark: #1d4ed8;
+    --blue-glow: rgba(37, 99, 235, 0.15);
+
+    /* Acentos Morados */
+    --purple-base: #7c3aed;
+    --purple-light: #a855f7;
+    --purple-dark: #4c1d95;
+    --purple-glow: rgba(124, 58, 237, 0.15);
+
+    /* Gradientes */
+    --gradient-primary: linear-gradient(135deg, var(--blue-base) 0%, var(--purple-base) 100%);
+    --gradient-subtle: linear-gradient(180deg, rgba(37, 99, 235, 0.05) 0%, rgba(124, 58, 237, 0.05) 100%);
+    --gradient-card: linear-gradient(145deg, rgba(24, 31, 48, 0.8) 0%, rgba(17, 22, 34, 0.9) 100%);
+
+    /* Tipografía y Textos */
+    --text-primary: #f1f5f9;     /* Blanco suave / texto principal */
+    --text-secondary: #94a3b8;   /* Gris claro / texto secundario */
+    --text-muted: #64748b;       /* Gris medio / notas y metadatos */
+    --text-placeholder: #a5b4fc; /* Indicadores de edición */
+
+    /* Bordes y Sombras */
+    --border-subtle: rgba(255, 255, 255, 0.07);
+    --border-accent: rgba(124, 58, 237, 0.3);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.5);
+
+    /* Transiciones */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+
+    /* Fuentes y Espaciados */
+    --font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    --container-max-width: 1080px;
+    --border-radius: 12px;
+    --border-radius-sm: 6px;
+    --border-radius-lg: 18px;
+}
+
+/* --------------------------------------------------------------------------
+   2. REINICIO Y CONFIGURACIÓN BASE
+   -------------------------------------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+    background-image: 
+        radial-gradient(circle at 15% 10%, rgba(37, 99, 235, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 85% 60%, rgba(124, 58, 237, 0.12) 0%, transparent 40%),
+        linear-gradient(rgba(10, 13, 20, 0.88), rgba(10, 13, 20, 0.88)),
+        url('Logo.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* --------------------------------------------------------------------------
+   3. CONTENEDORES Y ESTRUCTURA GENERAL
+   -------------------------------------------------------------------------- */
+.container {
+    width: 90%;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.section {
+    padding: 5rem 0;
+    position: relative;
+}
+
+.section-header {
+    margin-bottom: 2.5rem;
+    text-align: left;
+}
+
+.section-tag {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--blue-light);
+    margin-bottom: 0.5rem;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: var(--gradient-primary);
+    border-radius: 2px;
+    margin-top: 0.4rem;
+}
+
+/* Estilo para los placeholders que el usuario debe rellenar */
+.placeholder-box {
+    background-color: rgba(124, 58, 237, 0.08);
+    border: 1px dashed rgba(168, 85, 247, 0.4);
+    border-radius: var(--border-radius-sm);
+    padding: 0.85rem 1rem;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin: 0.5rem 0;
+}
+
+.placeholder-text {
+    color: var(--text-placeholder);
+    font-style: italic;
+}
+
+/* --------------------------------------------------------------------------
+   4. NAVEGACIÓN (HEADER)
+   -------------------------------------------------------------------------- */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: var(--bg-glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-subtle);
+    transition: background-color var(--transition-normal);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+}
+
+.nav-logo img {
+    height: 36px;
+    width: auto;
+    border-radius: 6px;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.nav-link {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    padding: 0.35rem 0.5rem;
+    border-radius: var(--border-radius-sm);
+    transition: all var(--transition-fast);
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--text-primary);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Botón menú móvil */
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   5. SECCIÓN INICIO / HERO
+   -------------------------------------------------------------------------- */
+.hero-section {
+    padding: 6rem 0 5rem;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero-content {
+    max-width: 760px;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.9rem;
+    background: rgba(37, 99, 235, 0.12);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    border-radius: 50px;
+    color: var(--blue-light);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+}
+
+.hero-badge-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--blue-light);
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.hero-subtitle {
+    font-size: 1.35rem;
+    color: var(--blue-light);
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    line-height: 1.7;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+}
+
+/* Botones genéricos */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius-sm);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    border: 1px solid transparent;
+}
+
+.btn-primary {
+    background: var(--gradient-primary);
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+}
+
+.btn-primary:hover {
+    box-shadow: 0 6px 20px rgba(124, 58, 237, 0.4);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: var(--bg-surface-elevated);
+    border-color: var(--border-subtle);
+    color: var(--text-primary);
+}
+
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: var(--border-accent);
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    background-color: transparent;
+    border-color: rgba(59, 130, 246, 0.4);
+    color: var(--blue-light);
+}
+
+.btn-outline:hover {
+    background-color: rgba(37, 99, 235, 0.1);
+    border-color: var(--blue-light);
+}
+
+/* --------------------------------------------------------------------------
+   6. SECCIÓN SOBRE MÍ
+   -------------------------------------------------------------------------- */
+.about-card {
+    background: var(--gradient-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--border-radius);
+    padding: 2.25rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.about-intro {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+}
+
+.about-placeholder-guide {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-subtle);
+}
+
+.guide-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--purple-light);
+    margin-bottom: 0.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   7. SECCIÓN FORMACIÓN
+   -------------------------------------------------------------------------- */
+.education-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.education-card {
+    background: var(--gradient-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    transition: all var(--transition-fast);
+    position: relative;
+    overflow: hidden;
+}
+
+.education-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--gradient-primary);
+}
+
+.education-card:hover {
+    border-color: var(--border-accent);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.education-status {
+    display: inline-block;
+    padding: 0.25rem 0.6rem;
+    background-color: rgba(37, 99, 235, 0.15);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    color: var(--blue-light);
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 4px;
+    margin-bottom: 0.75rem;
+}
+
+.education-status.completed {
+    background-color: rgba(124, 58, 237, 0.15);
+    border-color: rgba(168, 85, 247, 0.3);
+    color: var(--purple-light);
+}
+
+.education-degree {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.35rem;
+}
+
+.education-institution {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.education-period {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   8. SECCIÓN HABILIDADES / TECNOLOGÍAS
+   -------------------------------------------------------------------------- */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.skill-category-card {
+    background: var(--gradient-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--border-radius);
+    padding: 1.75rem;
+}
+
+.skill-category-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.skill-category-title::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: var(--purple-light);
+    border-radius: 50%;
+}
+
+.skills-tags-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.skill-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.4rem 0.85rem;
+    background-color: var(--bg-surface-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--border-radius-sm);
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: all var(--transition-fast);
+}
+
+.skill-tag:hover {
+    border-color: var(--purple-base);
+    color: var(--text-primary);
+    background-color: rgba(124, 58, 237, 0.12);
+}
+
+/* --------------------------------------------------------------------------
+   9. SECCIÓN PROYECTOS (2 PROYECTOS PRINCIPALES)
+   -------------------------------------------------------------------------- */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background: var(--gradient-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: all var(--transition-normal);
+}
+
+.project-card:hover {
+    border-color: var(--border-accent);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.project-preview {
+    width: 100%;
+    height: 190px;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    position: relative;
+}
+
+.project-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.project-body {
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.project-name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+}
+
+.project-description {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+    flex-grow: 1;
+}
+
+.project-tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.tech-badge {
+    font-size: 0.78rem;
+    padding: 0.25rem 0.6rem;
+    background-color: rgba(37, 99, 235, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.25);
+    color: var(--blue-light);
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.project-links {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+/* --------------------------------------------------------------------------
+   10. SECCIÓN EXPERIENCIA
+   -------------------------------------------------------------------------- */
+.experience-card {
+    background: var(--gradient-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--border-radius);
+    padding: 2.25rem;
+    position: relative;
+    border-left: 4px solid var(--purple-base);
+}
+
+.experience-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.experience-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.experience-context {
+    font-size: 1rem;
+    color: var(--purple-light);
+    font-weight: 600;
+    margin-top: 0.2rem;
+}
+
+.experience-period {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    background-color: var(--bg-surface-elevated);
+    padding: 0.25rem 0.65rem;
+    border-radius: 4px;
+    border: 1px solid var(--border-subtle);
+}
+
+.experience-description {
+    font-size: 0.98rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+}
+
+.experience-points {
+    list-style: disc;
+    padding-left: 1.25rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.25rem;
+}
+
+.experience-points li {
+    margin-bottom: 0.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   11. SECCIÓN CONTACTO
+   -------------------------------------------------------------------------- */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+}
+
+.contact-card {
+    background: var(--gradient-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--border-radius);
+    padding: 1.75rem;
+    text-align: center;
+    transition: all var(--transition-fast);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-card:hover {
+    border-color: var(--border-accent);
+    transform: translateY(-3px);
+    background-color: var(--bg-surface-elevated);
+}
+
+.contact-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--blue-light);
+}
+
+.contact-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 0.35rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.contact-value {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    word-break: break-all;
+}
+
+/* --------------------------------------------------------------------------
+   12. FOOTER
+   -------------------------------------------------------------------------- */
+.footer {
+    padding: 2.5rem 0;
+    border-top: 1px solid var(--border-subtle);
+    background-color: var(--bg-surface);
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   13. RESPONSIVE / MEDIA QUERIES
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: var(--bg-surface);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.5rem;
+        gap: 1rem;
+        border-bottom: 1px solid var(--border-subtle);
+        transform: translateY(-150%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all var(--transition-normal);
+    }
+
+    .nav-menu.open {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .nav-toggle {
+        display: block;
+    }
+
+    .hero-title {
+        font-size: 2.25rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.15rem;
+    }
+
+    .section {
+        padding: 3.5rem 0;
+    }
+}

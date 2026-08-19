@@ -1,25 +1,345 @@
-<!DOCTYPE html><<html lang="en">
+<!DOCTYPE html>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi portafolio</title>
-    <link rel="icon" href="static/logo.png" type="image/png" class="icono">
-    <link rel="stylesheet" href="static/styles.css">
-    <script src="static/app.js"></script>
+    <meta name="description" content="Portafolio profesional de estudiante de Ingeniería en Informática y Técnico en Programación">
+    <title>Diego Uribe | Portafolio</title>
+    
+    <!-- Enlace a la hoja de estilos externa -->
+    <link rel="stylesheet" href="../static/styles.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li>Home</li>
-                <li>Proyectos</li>
-                <li>Skills</li>
-                <li>Contacto</li>
 
+    <!-- ==========================================================================
+         BARRA DE NAVEGACIÓN (100% HTML + CSS, sin JavaScript)
+         ========================================================================== -->
+    <header class="header">
+        <div class="container nav-container">
+            <a href="#inicio" class="nav-logo">
+                <img src="../static/Logo.png" alt="Logo personal" class="nav-logo-img">
+                <span>MrDeguito</span>
+            </a>
 
+            <!-- Control del menú para dispositivos móviles (CSS checkbox hack) -->
+            <input type="checkbox" id="menuToggle" class="menu-toggle">
+            <label for="menuToggle" class="menu-icon" aria-label="Abrir menú de navegación">☰</label>
 
-            </ul>
-        </nav>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#inicio" class="nav-link">Inicio</a></li>
+                    <li><a href="#sobre-mi" class="nav-link">Sobre mí</a></li>
+                    <li><a href="#formacion" class="nav-link">Formación</a></li>
+                    <li><a href="#habilidades" class="nav-link">Habilidades</a></li>
+                    <li><a href="#proyectos" class="nav-link">Proyectos</a></li>
+                    <li><a href="#experiencia" class="nav-link">Experiencia</a></li>
+                    <li><a href="#contacto" class="nav-link">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
+
+    <main>
+        <!-- ==========================================================================
+             1. SECCIÓN INICIO / HERO
+             ========================================================================== -->
+        <section id="inicio" class="section hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <span class="hero-badge-dot"></span>
+                        Estudiante de Ingeniería en Informática
+                    </div>
+
+                    <!-- REEMPLAZAR: Tu nombre -->
+                    <h1 class="hero-title">Diego Uribe Flores</h1>
+                    <!-- REEMPLAZAR: Frase corta personal -->
+                    <p class="hero-description">
+                        Tecnico en Programación y estudiante de Ingeniería en Informática con mención en Desarrollo de Software. Enfocado en la construcción de plataformas sólidas con metas de formación en el area de la ciberseguridad.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#proyectos" class="btn btn-primary">Ver Proyectos</a>
+                        <a href="#contacto" class="btn btn-secondary">Contactar</a>
+                        <!-- REEMPLAZAR: Enlace a tu GitHub -->
+                        <a href="https://github.com/MrDeguitoo" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             2. SECCIÓN SOBRE MÍ
+             ========================================================================== -->
+        <section id="sobre-mi" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Perfil</span>
+                    <br>
+                    <h2 class="section-title">Sobre mí</h2>
+                </div>
+
+                <div class="about-card">
+                    <!-- ÁREA RESERVADA PARA TU TEXTO PERSONAL -->
+                        <strong>[Espacio para tu redacción personal]:</strong><br>
+                        Escribe aquí tu propia presentación: quién eres, qué áreas de la informática te llaman la atención, cómo combinas tu base técnica con tus estudios universitarios y tu motivación para continuar aprendiendo.
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             3. SECCIÓN FORMACIÓN
+             ========================================================================== -->
+        <section id="formacion" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Estudios</span>
+                    <br>
+                    <h2 class="section-title">Formación Académica</h2>
+                </div>
+
+                <div class="education-grid">
+                    <!-- Carrera Actual -->
+                    <article class="education-card">
+                        <span class="education-status">En curso</span>
+                        <h3 class="education-degree">Ingeniería en Informática</h3>
+                        <!-- REEMPLAZAR: Institución educativa -->
+                        <p class="education-institution">Duoc UC</p>
+                        <!-- REEMPLAZAR: Años de cursado -->
+                        <p class="education-period">2025 - En curso</p>
+                    </article>
+
+                    <!-- Título Previo -->
+                    <article class="education-card completed">
+                        <span class="education-status completed">Titulado</span>
+                        <h3 class="education-degree">Técnico en Programación</h3>
+                        <!-- REEMPLAZAR: Institución educativa -->
+                        <p class="education-institution">Liceo Andres Bello</p>
+                        <!-- REEMPLAZAR: Año de graduación -->
+                        <p class="education-period">2021 - 2024</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             4. SECCIÓN HABILIDADES / TECNOLOGÍAS
+             ========================================================================== -->
+        <section id="habilidades" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Herramientas</span>
+                    <br>
+                    <h2 class="section-title">Habilidades y Tecnologías</h2>
+                </div>
+
+                <div class="skills-grid">
+                    <!-- Categoría 1: Lenguajes -->
+                    <div class="skill-category-card">
+                        <h3 class="skill-category-title">Lenguajes y tecnologías web</h3>
+                        <div class="skills-tags-wrapper">
+                            <!-- REEMPLAZAR: Agrega tus lenguajes -->
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">HTML</span>
+                            <span class="skill-tag">CSS</span>
+                        </div>
+                    </div>
+
+                    <!-- Categoría 2: Desarrollo Web / Software -->
+                    <div class="skill-category-card">
+                        <h3 class="skill-category-title">Desarrollo Web / Frameworks</h3>
+                        <div class="skills-tags-wrapper">
+                            <!-- REEMPLAZAR: Agrega tus tecnologías -->
+                            <span class="skill-tag">Flask</span>
+                            <span class="skill-tag">Spring Boot</span>
+                            <span class="skill-tag">Spring Cloud</span>
+                            <span class="skill-tag">FastAPI</span>
+                        </div>
+                    </div>
+
+                    <!-- Categoría 3: Herramientas y Bases de Datos -->
+                    <div class="skill-category-card">
+                        <h3 class="skill-category-title">Herramientas & Bases de Datos</h3>
+                        <div class="skills-tags-wrapper">
+                            <!-- REEMPLAZAR: Agrega tus herramientas -->
+                            <span class="skill-tag">Git / GitHub</span>
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">Docker Compose</span>
+                            <span class="skill-tag">PostgreSQL</span>
+                            <span class="skill-tag">MySQL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             5. SECCIÓN PROYECTOS (Únicamente 2 proyectos principales de GitHub)
+             ========================================================================== -->
+        <section id="proyectos" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Trabajos</span>
+                    <br>
+                    <h2 class="section-title">Proyectos Destacados</h2>
+                </div>
+
+                <div class="projects-grid">
+                    <!-- ==================== PROYECTO 1 ==================== -->
+                    <article class="project-card">
+                        <div class="project-body">
+                            <!-- REEMPLAZAR: Nombre del proyecto -->
+                            <h3 class="project-name">GestionInventario-Fullstack</h3>
+                            <span class="section-tag">Proyecto académico colaborativo • Java/Spring Boot</span>
+                            
+                            <!-- REEMPLAZAR: Breve descripción -->
+                            <p class="project-description">
+                                Reinvención del sistema de gestión desarrollado anteriormente, orientada a la gestión de inventario de un taller mecánico. El proyecto implementa una arquitectura de 10 microservicios independientes utilizando Java, Spring Boot y Spring Cloud, centralizados mediante un API Gateway y protegidos mediante autenticación JWT.
+                                La información se gestiona mediante MySQL, con una base de datos independiente por microservicio, mientras que Docker y Docker Compose se utilizan para la contenerización de la infraestructura.
+
+                            </p>
+
+                            <!-- REEMPLAZAR: Tecnologías empleadas -->
+                            <div class="project-tech-stack">
+                                <span class="tech-badge">Java 21</span>
+                                <span class="tech-badge">Spring Boot</span>
+                                <span class="tech-badge">Spring Cloud</span>
+                                <span class="tech-badge">MySQL</span>
+                                <span class="tech-badge">Docker</span>
+                            </div>
+
+                            <div class="project-links">
+                                <!-- REEMPLAZAR: Enlace directo al repositorio -->
+                                <a href="https://github.com/MrDeguitoo/GestionInventario-Fullstack" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                                    Ver en GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- ==================== PROYECTO 2 ==================== -->
+                    <article class="project-card">
+                        <div class="project-body">
+                            <!-- REEMPLAZAR: Nombre del proyecto -->
+                            <h3 class="project-name">Taller-IA</h3>
+                            <span class="section-tag">Proyecto académico colaborativo • IA/RAG</span>
+                            
+                            <!-- REEMPLAZAR: Breve descripción -->
+                            <p class="project-description">
+                                Sistema de IA para talleres mecánicos que transforma diagnósticos técnicos en explicaciones simples para los clientes. Utiliza RAG (Retrieval-Augmented Generation) para consultar documentación técnica antes de generar las respuestas.
+                                El procesamiento se ejecuta 100% de forma local mediante Ollama, utilizando un backend FastAPI, frontend React y una base vectorial ChromaDB. También incorpora monitoreo de latencia, errores y consultas realizadas.
+                            </p>
+
+                            <!-- REEMPLAZAR: Tecnologías empleadas -->
+                            <div class="project-tech-stack">
+                                <span class="tech-badge">Python</span>
+                                <span class="tech-badge">FastAPI</span>
+                                <span class="tech-badge">Ollama</span>
+                                <span class="tech-badge">Docker</span>
+
+                            </div>
+
+                            <div class="project-links">
+                                <!-- REEMPLAZAR: Enlace directo al repositorio -->
+                                <a href="https://github.com/MrDeguitoo/Taller-IA" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                                    Ver en GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             6. SECCIÓN EXPERIENCIA (PROYECTO TALLER MECÁNICO)
+             ========================================================================== -->
+        <section id="experiencia" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Desarrollo Práctico</span>
+                    <br>
+                    <h2 class="section-title">Experiencia</h2>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <h3 class="experience-title">Sistema web para gestión y registro de vehículos</h3>
+                            <p class="experience-context">Proyecto para Taller Mecánico • <span class="experience-context">Práctica profesional</span></p>
+                        </div>
+                        <span class="experience-period">2025</span>
+                    </div>
+
+                    <!-- REEMPLAZAR: Resumen general del sistema -->
+                    <p class="experience-description">
+                        Sistema web desarrollado para RSM Automotriz con el objetivo de centralizar y facilitar la gestión de la información de los vehículos atendidos por el taller, reemplazando parte de los registros manuales realizados en papel.
+                        El sistema permite registrar, buscar y actualizar vehículos mediante su número de patente, además de asociar imágenes a cada registro. La aplicación fue desarrollada con Python y Flask, utilizando PostgreSQL para almacenar la información.
+                    </p>
+
+                    <!-- REEMPLAZAR: Puntos clave o funcionalidades desarrolladas -->
+                    <ul class="experience-points">
+                        <li>Registro y actualización de vehículos.</li>
+                        <li>Búsqueda mediante número de patente.</li>
+                        <li>Asociación de imágenes a los registros.</li>
+                        <li>Almacenamiento de información en PostgreSQL.</li>
+                        <li>Interfaz enfocada en la simplicidad y facilidad de uso.</li>
+                    </ul>
+
+                    <!-- REEMPLAZAR: Tecnologías empleadas -->
+                    <div class="project-tech-stack">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">Flask</span>
+                        <span class="tech-badge">HTML</span>
+                        <span class="tech-badge">CSS</span>
+                        <span class="tech-badge">PostgreSQL</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             7. SECCIÓN CONTACTO
+             ========================================================================== -->
+        <section id="contacto" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Conexión</span>
+                    <br>
+                    <h2 class="section-title">Contacto</h2>
+                </div>
+
+                <div class="contact-grid">
+                    <!-- Correo -->
+                    <a href="mailto:d.uribef724@gmail.com" class="contact-card">
+                        <div class="contact-icon">✉</div>
+                        <div class="contact-label">Correo Electrónico</div>
+                        <div class="contact-value">d.uribef724@gmail.com</div>
+                    </a>
+
+                    <!-- GitHub -->
+                    <a href="https://github.com/MrDeguitoo" target="_blank" rel="noopener noreferrer" class="contact-card">
+                        <div class="contact-icon">💻</div>
+                        <div class="contact-label">GitHub</div>
+                        <div class="contact-value">github.com/MrDeguitoo</div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==========================================================================
+         FOOTER
+         ========================================================================== -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Diego Alfonso Uribe Flores. Portafolio desarrollado con HTML y CSS.</p>
+        </div>
+    </footer>
+
 </body>
 </html>
